@@ -167,7 +167,7 @@ export default function Home() {
 
         {results && (
           <div className="w-full space-y-6">
-            <Card className="border-green-200 bg-green-50">
+            <Card className="border-green-200">
               <CardHeader>
                 <CardTitle className="text-green-800">Mejor Prediccion</CardTitle>
               </CardHeader>
@@ -176,7 +176,13 @@ export default function Home() {
                   <h3 className="text-xl font-semibold">{formatClassName(results.top_prediction.class_name)}</h3>
                   <span className="text-lg font-bold">{results.top_prediction.confidence.toFixed(2)}%</span>
                 </div>
-                <Progress value={results.top_prediction.confidence} className="h-2 mt-2 bg-green-200" />
+                {/* <Progress value={results.top_prediction.confidence} className="h-2 mt-2 bg-green-800" /> */}
+                <div className="w-full bg-gray-600 rounded-full h-3.5 mt-4">
+                          <div
+                            className="bg-green-500 h-3.5 rounded-full"
+                            style={{ width: `${results.top_prediction.confidence}%` }}
+                          ></div>
+                        </div>
               </CardContent>
             </Card>
 
@@ -190,7 +196,7 @@ export default function Home() {
                     <li key={index} className="flex justify-between items-center">
                       <span className="font-medium">{formatClassName(prediction.class_name)}</span>
                       <div className="flex items-center gap-2">
-                        <div className="w-32 bg-gray-200 rounded-full h-2.5">
+                        <div className="w-32 bg-gray-600 rounded-full h-2.5">
                           <div
                             className="bg-green-600 h-2.5 rounded-full"
                             style={{ width: `${prediction.confidence}%` }}
